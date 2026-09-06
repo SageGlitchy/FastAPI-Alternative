@@ -12,6 +12,7 @@ class Foo(FooBaseModel):
     pass
 
 
+
 app = FastAPI()
 
 
