@@ -144,6 +144,20 @@ $ uv add "fastapi[standard]"
 
 If you prefer to use `pip`, install `fastapi[standard]` inside a virtual environment. See the [installation guide](tutorial/#install-fastapi) for the alternative steps.
 
+### Quick Start with Docker
+
+You can also run the project instantly using Docker Compose:
+
+```console
+$ git clone https://github.com/fastapi/fastapi.git
+$ cd fastapi
+$ docker compose up
+```
+
+This starts the FastAPI demo app at <a href="http://localhost:8000" target="_blank">http://localhost:8000</a> with a PostgreSQL database — no local Python installation required.
+
+Open <a href="http://localhost:8000/docs" target="_blank">http://localhost:8000/docs</a> to explore the interactive API documentation.
+
 ## Example
 
 ### Create it

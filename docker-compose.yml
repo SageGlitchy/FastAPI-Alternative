@@ -1,0 +1,39 @@
+services:
+  # FastAPI demo application
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgresql+psycopg://postgres:postgres@db:5432/fastapi_dev
+      - SECRET_KEY=dev-only-not-for-production
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "uv sync --extra all &&
+             uv run uvicorn docs_src.first_steps.tutorial001_py310:app --host 0.0.0.0 --port 8000 --reload"
+
+  # PostgreSQL backing service (used by sql_databases tutorials)
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fastapi_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
