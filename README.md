@@ -19,6 +19,11 @@
 </a>
 </p>
 
+> **⑂ Fork Notice** — This repository is a fork of
+> [fastapi/fastapi](https://github.com/fastapi/fastapi). See
+> [FORK.md](FORK.md) for full provenance details and a list of changes
+> made in this fork.
+
 ---
 
 **Documentation**: [https://fastapi.tiangolo.com](https://fastapi.tiangolo.com)
@@ -149,14 +154,29 @@ If you prefer to use `pip`, install `fastapi[standard]` inside a virtual environ
 You can also run the project instantly using Docker Compose:
 
 ```console
-$ git clone https://github.com/fastapi/fastapi.git
-$ cd fastapi
+$ git clone https://github.com/SageGlitchy/FastAPI-Alternative.git
+$ cd FastAPI-Alternative
+$ cp .env.example .env   # edit .env with your own values
 $ docker compose up
 ```
+
+See [`.env.example`](.env.example) for the environment variables used by the Docker setup.
 
 This starts the FastAPI demo app at <a href="http://localhost:8000" target="_blank">http://localhost:8000</a> with a PostgreSQL database — no local Python installation required.
 
 Open <a href="http://localhost:8000/docs" target="_blank">http://localhost:8000/docs</a> to explore the interactive API documentation.
+
+### Development Setup
+
+To set up a local development environment from a fresh clone:
+
+```console
+$ git clone https://github.com/SageGlitchy/FastAPI-Alternative.git
+$ cd FastAPI-Alternative
+$ uv sync --locked --all-extras --dev
+```
+
+This installs all runtime, optional, and development dependencies using the exact versions pinned in `uv.lock`.
 
 ## Example
 
